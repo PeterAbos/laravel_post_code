@@ -70,7 +70,10 @@ class CitiesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $city = City::find($id);
+        $counties = County::all();
+
+        return view('cities.edit', compact('city', 'counties'));
     }
 
     /**
@@ -78,7 +81,28 @@ class CitiesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'zip_code' => 'required|min:4|max:4',
+                'name' => 'required|min:2'
+            ],
+            [
+                'zip_code.required' => "Az irányítószám kötelező mező!",
+                'zip_code.min' => "Az irányítószám 4 számból áll",
+                'zip_code.max' => "Az irányítószám 4 számból áll",
+                'name.required' => "A város neve kötelező mező!",
+                'name.min' => "A város neve több mint 1 betű!",
+            ]
+        );
+
+        $city = City::find($id);
+        $city->zip_code = $request->zip_code;
+        $city->name = $request->name;
+        $city->population = $request->population;
+        $city->id_county = $request->id_county;
+        $city->save();
+
+        return redirect()->route('cities.index')->with('success', "Város szerkesztve!");
     }
 
     /**
@@ -86,6 +110,9 @@ class CitiesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $city = City::find($id);
+        $city->delete();
+
+        return redirect()->route("cities.index")->with('success', 'Város sikeresen törölve!');
     }
 }
