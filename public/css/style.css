@@ -4,15 +4,17 @@ html {
 
 table {
     background-color: beige;
+    margin: auto;
 }
 
 main {
     background-color: orange;
     padding: 20px;
     text-align: center;
-    width: max-content;
+    width: fit-content;
     margin: auto;
     border-radius: 20px;
+    max-width: 80%;
 }
 
 ul {
