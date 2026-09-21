@@ -62,7 +62,9 @@ class CitiesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $city = City::find($id);
+
+        return view('cities.show', compact('city'));
     }
 
     /**
