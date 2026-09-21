@@ -1,0 +1,23 @@
+html {
+    background-color: aqua;
+}
+
+table {
+    background-color: beige;
+}
+
+main {
+    background-color: orange;
+    padding: 20px;
+    text-align: center;
+    width: max-content;
+    margin: auto;
+    border-radius: 20px;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    width: max-content;
+}
