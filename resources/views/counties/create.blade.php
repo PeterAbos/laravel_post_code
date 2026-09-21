@@ -8,8 +8,6 @@
 <div>{{ $message }}</div>
 @enderror
 
-<a href="{{ route('counties.index') }}">Vissza</a>
-
 <form action="{{ route('counties.store') }}" method="POST">
     @csrf
     <fieldset>

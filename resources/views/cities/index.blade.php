@@ -4,6 +4,12 @@
 
 <h1>Városok</h1>
 
+<a href="{{ route('cities.create') }}">Új város</a>
+
+@if (session('success'))
+    <div>{{ session('success') }}</div>
+@endif
+
 <table border="2">
     <tr>
         <th>#</th>
