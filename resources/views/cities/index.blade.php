@@ -10,6 +10,16 @@
     <div>{{ session('success') }}</div>
 @endif
 
+<form action="{{ route('cities.index') }}" method="get">
+    <select name="county" id="county">
+        <option value="" {{ request('county') == "" ? "selected" : "" }}>---</option>
+        @foreach ($counties as $county)
+            <option value="{{ $county->id }}" {{ request('county') == $county->id ? "selected" : "" }}>{{ $county->name }}</option>
+        @endforeach
+    </select>
+    <button type="submit">Szűrés</button>
+</form>
+
 <table border="2">
     <tr>
         <th>#</th>

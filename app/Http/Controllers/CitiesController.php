@@ -11,11 +11,20 @@ class CitiesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cities = City::all();
+        $query = City::query();
 
-        return view('cities.index', compact('cities'));
+        
+        if ($request->filled('county')) {
+            $query->where('id_county', '=', $request->county);
+        }
+        $cities = $query->get();
+
+
+        $counties = County::all();
+
+        return view('cities.index', compact('cities', 'counties'));
     }
 
     /**
