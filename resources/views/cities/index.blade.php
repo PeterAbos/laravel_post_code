@@ -11,6 +11,7 @@
 @endif
 
 <form action="{{ route('cities.index') }}" method="get">
+    <input type="text" name="search" id="search" value="{{ request('search') }}">
     <select name="county" id="county">
         <option value="" {{ request('county') == "" ? "selected" : "" }}>---</option>
         @foreach ($counties as $county)

@@ -19,6 +19,9 @@ class CitiesController extends Controller
         if ($request->filled('county')) {
             $query->where('id_county', '=', $request->county);
         }
+        if ($request->filled('search')) {
+            $query->where('name', 'LIKE', '%'.$request->search.'%');
+        }
         $cities = $query->get();
 
 
