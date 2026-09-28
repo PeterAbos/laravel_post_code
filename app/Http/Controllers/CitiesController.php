@@ -22,7 +22,7 @@ class CitiesController extends Controller
         if ($request->filled('search')) {
             $query->where('name', 'LIKE', '%'.$request->search.'%');
         }
-        $cities = $query->get();
+        $cities = $query->paginate(10);
 
 
         $counties = County::all();
